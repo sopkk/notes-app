@@ -9,3 +9,8 @@ export const addNote = (note) => ({
   type: constants.ADD_NOTE,
   payload: { note },
 });
+
+export const deleteNote = (id) => ({
+  type: constants.DELETE_NOTE,
+  payload: { id },
+});

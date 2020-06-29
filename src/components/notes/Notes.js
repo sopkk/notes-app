@@ -17,13 +17,20 @@ const Notes = () => {
     dispatch(actions.getNotes());
   }, [dispatch]);
 
+  const handleDelete = (id) => {
+    dispatch(actions.deleteNote(id));
+  };
+
   const data = useSelector(selectNotes);
   const notes = data.map((note) => (
     <Note
       key={note.id}
+      id={note.id}
       title={note.title}
       body={note.body}
       authorName={note.authorName}
+      createdAt={note.createdAt}
+      onDelete={handleDelete}
     />
   ));
 

@@ -2,11 +2,14 @@ import React from "react";
 
 import "./Note.css";
 
-const Note = (props) => (
+const Note = ({ id, title, body, authorName, onDelete }) => (
   <div className="note">
-    <span>{props.title}</span>
-    <p>{props.body}</p>
-    <div className="note-author-name">{props.authorName}</div>
+    <span>{title}</span>
+    <span className="delete" onClick={() => onDelete(id)}>
+      &times;
+    </span>
+    <p>{body}</p>
+    <div className="note-author-name">{authorName}</div>
   </div>
 );
 

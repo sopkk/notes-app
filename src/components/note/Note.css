@@ -10,3 +10,17 @@
 .note-author-name {
   text-align: right;
 }
+
+.delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.delete:hover,
+.delete:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

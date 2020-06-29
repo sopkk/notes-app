@@ -12,3 +12,9 @@ export const addNote = (note) => {
     dispatch(actionTypes.addNote({ ...note, createdAt: new Date() }));
   };
 };
+
+export const deleteNote = (id) => {
+  return (dispatch) => {
+    dispatch(actionTypes.deleteNote(id));
+  };
+};

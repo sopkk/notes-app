@@ -4,23 +4,29 @@ import Button from "../common/button/Button";
 import Input from "../common/input/Input";
 import "./Modal.css";
 
-const Modal = (props) => {
-  const [note, setNote] = useState({
+const Modal = ({ isOpen, onClose, onSave }) => {
+  const emptyNote = {
     title: "",
     body: "",
     authorName: "",
-  });
+  };
+  const [note, setNote] = useState(emptyNote);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
     setNote({ ...note, [name]: value });
   };
 
+  const handleClick = () => {
+    onSave(note);
+    setNote(emptyNote);
+  };
+
   return (
-    props.isOpen && (
+    isOpen && (
       <div className="modal">
         <div className="modal-content">
-          <span className="close" onClick={props.onClose}>
+          <span className="close" onClick={onClose}>
             &times;
           </span>
           <Input
@@ -47,8 +53,9 @@ const Modal = (props) => {
           <Button
             name="add-note"
             type="button"
-            onClick={() => props.onSave(note)}
+            onClick={handleClick}
             className="add-note-button"
+            disabled={!(note.title && note.body && note.authorName)}
           >
             Add note
           </Button>
