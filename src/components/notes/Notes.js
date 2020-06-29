@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import * as actions from "../../store/actions/noteActions";
+import { selectNotes } from "../../store/selectors/selectNotes";
 import Note from "../note/Note";
-import data from "../../notes.json";
 import "./Notes.css";
 
-const Notes = (props) => {
+const Notes = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getNotes());
+  }, [dispatch]);
+
+  const data = useSelector(selectNotes);
   const notes = data.map((note) => (
     <Note
       key={note.id}
@@ -12,6 +22,7 @@ const Notes = (props) => {
       author_name={note.author_name}
     />
   ));
+
   return <div className="notes">{notes}</div>;
 };
 
