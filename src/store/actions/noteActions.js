@@ -6,3 +6,9 @@ export const getNotes = () => {
     dispatch(actionTypes.getNotes(data));
   };
 };
+
+export const addNote = (note) => {
+  return (dispatch) => {
+    dispatch(actionTypes.addNote({ ...note, createdAt: new Date() }));
+  };
+};

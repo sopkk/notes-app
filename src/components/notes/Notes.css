@@ -2,3 +2,13 @@
   display: flex;
   justify-content: space-around;
 }
+
+.add-note-modal-button {
+  margin: 5px;
+  width: 15%;
+  color: white;
+  border-radius: 2%;
+  border-color: pink;
+  background-color: pink;
+  font-size: x-large;
+}
