@@ -19,8 +19,9 @@ const Input = ({ tag, type, name, value, placeholder, onChange }) => {
       return (
         <textarea
           name={name}
-          onChange={onChange}
+          value={value}
           placeholder={placeholder}
+          onChange={onChange}
           rows="3"
           className="textarea-field"
         ></textarea>

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from "../common/button/Button";
 import Input from "../common/input/Input";
 import "./Modal.css";
 
-const Modal = ({ isOpen, onClose, onSave }) => {
+const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
   const emptyNote = {
     title: "",
     body: "",
@@ -12,13 +12,29 @@ const Modal = ({ isOpen, onClose, onSave }) => {
   };
   const [note, setNote] = useState(emptyNote);
 
+  useEffect(() => {
+    if (selectedDraft) {
+      setNote((state) => ({ ...state, ...selectedDraft }));
+    }
+  }, [selectedDraft]);
+
   const handleChange = (event) => {
     const { value, name } = event.target;
     setNote({ ...note, [name]: value });
   };
 
-  const handleClick = () => {
+  const handleSave = () => {
     onSave(note);
+    setNote(emptyNote);
+  };
+
+  const handleDraft = () => {
+    onSaveDraft(note);
+    setNote(emptyNote);
+  };
+
+  const handleClose = () => {
+    onClose();
     setNote(emptyNote);
   };
 
@@ -26,13 +42,14 @@ const Modal = ({ isOpen, onClose, onSave }) => {
     isOpen && (
       <div className="modal">
         <div className="modal-content">
-          <span className="close" onClick={onClose}>
+          <span className="close" onClick={handleClose}>
             &times;
           </span>
           <Input
             tag="input"
             type="text"
             name="title"
+            value={note.title}
             placeholder="Title"
             onChange={handleChange}
           />
@@ -40,6 +57,7 @@ const Modal = ({ isOpen, onClose, onSave }) => {
             tag="textarea"
             type="text"
             name="body"
+            value={note.body}
             placeholder="Description"
             onChange={handleChange}
           />
@@ -47,17 +65,27 @@ const Modal = ({ isOpen, onClose, onSave }) => {
             tag="input"
             type="text"
             name="authorName"
+            value={note.authorName}
             placeholder="Author"
             onChange={handleChange}
           />
           <Button
             name="add-note"
             type="button"
-            onClick={handleClick}
+            onClick={handleSave}
             className="add-note-button"
             disabled={!(note.title && note.body && note.authorName)}
           >
-            Add note
+            Save
+          </Button>
+          <Button
+            name="add-note"
+            type="button"
+            onClick={handleDraft}
+            className="add-note-button"
+            disabled={!(note.title && note.body && note.authorName)}
+          >
+            Save as draft
           </Button>
         </div>
       </div>

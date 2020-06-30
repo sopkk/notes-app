@@ -1,11 +1,11 @@
 import React from "react";
-import Notes from "./components/notes/Notes";
+import MainPage from "./components/mainPage/MainPage";
 
 function App() {
   return (
     <div>
       <h3>Notes</h3>
-      <Notes />
+      <MainPage />
     </div>
   );
 }
