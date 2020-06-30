@@ -19,3 +19,7 @@ export const filterNotes = (query) => ({
   type: constants.FILTER_NOTES,
   payload: { query },
 });
+
+export const sortNotes = () => ({
+  type: constants.SORT_NOTES,
+});

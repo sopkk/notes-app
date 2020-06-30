@@ -48,6 +48,11 @@ const Notes = () => {
     dispatch(actions.filterNotes(value));
   };
 
+  const handleSort = () => {
+    console.log("sorting...");
+    dispatch(actions.sortNotes());
+  };
+
   return (
     <div>
       <Input
@@ -57,6 +62,16 @@ const Notes = () => {
         placeholder="Search by title..."
         onChange={handleChange}
       />
+      {!query && (
+        <Button
+          name="sort-button"
+          type="button"
+          className="sort-button"
+          onClick={handleSort}
+        >
+          Sort
+        </Button>
+      )}
 
       <div className="notes">
         {!query && (

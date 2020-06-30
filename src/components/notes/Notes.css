@@ -12,3 +12,11 @@
   background-color: pink;
   font-size: x-large;
 }
+
+.sort-button {
+  color: white;
+  border-radius: 1px;
+  background-color: darkcyan;
+  border-color: darkcyan;
+  width: 100px;
+}

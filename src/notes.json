@@ -4,34 +4,39 @@
     "title": "note1",
     "body": "body1",
     "authorName": "author name 1",
-    "createdAt": "2020-06-29T12:39:42.366Z"
+    "createdAt": "Tue Jun 30 2020 07:34:12 GMT+0200 (Central European Summer Time)",
+    "status": "published"
   },
   {
     "id": "1",
     "title": "note2",
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "authorName": "author name 2",
-    "createdAt": "2020-06-28T12:39:42.366Z"
+    "createdAt": "Tue Jun 30 2020 08:34:12 GMT+0200 (Central European Summer Time)",
+    "status": "draft"
   },
   {
     "id": "2",
     "title": "note3",
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "authorName": "author name 3",
-    "createdAt": "2020-06-29T11:39:42.366Z"
+    "createdAt": "Tue Jun 30 2020 08:34:12 GMT+0200 (Central European Summer Time)",
+    "status": "draft"
   },
   {
     "id": "3",
     "title": "note4",
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "authorName": "author name 4",
-    "createdAt": "2020-05-29T12:39:42.366Z"
+    "createdAt": "Tue Jun 30 2020 08:34:12 GMT+0200 (Central European Summer Time)",
+    "status": "published"
   },
   {
     "id": "4",
     "title": "note5",
     "body": "body5",
     "authorName": "author name 5",
-    "createdAt": "2020-06-29T12:44:42.366Z"
+    "createdAt": "Tue Jun 30 2020 08:34:12 GMT+0200 (Central European Summer Time)",
+    "status": "published"
   }
 ]

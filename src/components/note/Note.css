@@ -11,6 +11,11 @@
   text-align: right;
 }
 
+.note-created-at {
+  text-align: right;
+  font-style: italic;
+}
+
 .delete {
   color: #aaaaaa;
   float: right;

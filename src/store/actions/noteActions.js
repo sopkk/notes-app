@@ -24,3 +24,9 @@ export const filterNotes = (query) => {
     dispatch(actionTypes.filterNotes(query));
   };
 };
+
+export const sortNotes = () => {
+  return (dispatch) => {
+    dispatch(actionTypes.sortNotes());
+  };
+};
