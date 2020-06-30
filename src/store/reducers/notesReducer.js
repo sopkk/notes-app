@@ -1,16 +1,33 @@
 import * as constants from "../actions/constants";
 import { generateUniqueId } from "../../util";
 
-const initialState = [];
+const initialState = { items: [], filteredItems: [] };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.GET_NOTES:
-      return action.payload.notes;
+      return { ...state, items: action.payload.notes };
     case constants.ADD_NOTE:
-      return [...state, { ...action.payload.note, id: generateUniqueId() }];
+      return {
+        ...state,
+        items: [
+          ...state.items,
+          { id: generateUniqueId(), ...action.payload.note },
+        ],
+      };
     case constants.DELETE_NOTE:
-      return state.filter((note) => note.id !== action.payload.id);
+      return {
+        ...state,
+        items: state.items.filter((note) => note.id !== action.payload.id),
+      };
+    case constants.FILTER_NOTES:
+      state.filteredItems = [...state.items];
+      return {
+        ...state,
+        filteredItems: state.filteredItems.filter((note) =>
+          note.title.toLowerCase().includes(action.payload.query.toLowerCase())
+        ),
+      };
     default:
       return state;
   }

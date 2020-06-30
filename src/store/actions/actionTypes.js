@@ -14,3 +14,8 @@ export const deleteNote = (id) => ({
   type: constants.DELETE_NOTE,
   payload: { id },
 });
+
+export const filterNotes = (query) => ({
+  type: constants.FILTER_NOTES,
+  payload: { query },
+});

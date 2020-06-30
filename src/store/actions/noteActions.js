@@ -18,3 +18,9 @@ export const deleteNote = (id) => {
     dispatch(actionTypes.deleteNote(id));
   };
 };
+
+export const filterNotes = (query) => {
+  return (dispatch) => {
+    dispatch(actionTypes.filterNotes(query));
+  };
+};
