@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { bool, func, string, shape } from "prop-types";
 
 import Button from "../common/button/Button";
 import Input from "../common/input/Input";
+import { isFormValid, getValidationMessage } from "../../validation";
 import "./Modal.css";
-import { bool, func, string, shape } from "prop-types";
 
 const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
   const emptyNote = {
@@ -12,6 +13,11 @@ const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
     authorName: "",
   };
   const [note, setNote] = useState(emptyNote);
+  const [validationMessage, setValidationMessage] = useState({
+    title: { isValid: false, message: null },
+    body: { isValid: false, message: null },
+    authorName: { isValid: false, message: null },
+  });
 
   useEffect(() => {
     if (selectedDraft) {
@@ -21,6 +27,10 @@ const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
 
   const handleChange = (event) => {
     const { value, name } = event.target;
+    setValidationMessage({
+      ...validationMessage,
+      [name]: getValidationMessage(name, value),
+    });
     setNote({ ...note, [name]: value });
   };
 
@@ -46,36 +56,40 @@ const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
           <span className="close" onClick={handleClose}>
             &times;
           </span>
+
           <Input
             tag="input"
             type="text"
             name="title"
             value={note.title}
-            placeholder="Title"
+            placeholder="Title*"
             onChange={handleChange}
+            validationMessage={validationMessage["title"].message}
           />
           <Input
             tag="textarea"
             type="text"
             name="body"
             value={note.body}
-            placeholder="Description"
+            placeholder="Description*"
             onChange={handleChange}
+            validationMessage={validationMessage["body"].message}
           />
           <Input
             tag="input"
             type="text"
             name="authorName"
             value={note.authorName}
-            placeholder="Author"
+            placeholder="Author*"
             onChange={handleChange}
+            validationMessage={validationMessage["authorName"].message}
           />
           <Button
             name="add-note"
             type="button"
             onClick={handleSave}
             className="add-note-button"
-            disabled={!(note.title && note.body && note.authorName)}
+            disabled={!isFormValid(validationMessage)}
           >
             Save
           </Button>
@@ -84,7 +98,7 @@ const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
             type="button"
             onClick={handleDraft}
             className="add-note-button"
-            disabled={!(note.title && note.body && note.authorName)}
+            disabled={!isFormValid(validationMessage)}
           >
             Save as draft
           </Button>

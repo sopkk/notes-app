@@ -1,42 +1,59 @@
 import React from "react";
 
-import "./Input.css";
 import { string, func } from "prop-types";
+import "./Input.css";
 
-const Input = ({ tag, type, name, value, placeholder, onChange }) => {
+const Input = ({
+  tag,
+  type,
+  name,
+  value,
+  placeholder,
+  onChange,
+  validationMessage,
+}) => {
   switch (tag) {
     case "input":
       return (
-        <input
-          type={type}
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
-          className="input-field"
-        />
+        <div>
+          <input
+            type={type}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            className="input-field"
+          />
+          <label>{validationMessage}</label>
+        </div>
       );
     case "textarea":
       return (
-        <textarea
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
-          rows="3"
-          className="textarea-field"
-        ></textarea>
+        <div>
+          <textarea
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            rows="3"
+            className="textarea-field"
+          ></textarea>
+          <label>{validationMessage}</label>
+        </div>
       );
     default:
       return (
-        <input
-          type={type}
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
-          className="input-field"
-        />
+        <div>
+          <label>{validationMessage}</label>
+          <input
+            type={type}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            className="input-field"
+          />
+        </div>
       );
   }
 };
@@ -48,6 +65,7 @@ Input.propTypes = {
   value: string,
   placeholder: string,
   onChange: func,
+  validationMessage: string,
 };
 
 export default Input;
