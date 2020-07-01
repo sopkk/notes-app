@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../common/button/Button";
 import Input from "../common/input/Input";
 import "./Modal.css";
+import { bool, func, string, shape } from "prop-types";
 
 const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
   const emptyNote = {
@@ -91,6 +92,21 @@ const Modal = ({ isOpen, onClose, onSave, onSaveDraft, selectedDraft }) => {
       </div>
     )
   );
+};
+
+Modal.propTypes = {
+  isOpen: bool.isRequired,
+  onClose: func.isRequired,
+  onSave: func.isRequired,
+  onSaveDraft: func.isRequired,
+  selectedDraft: shape({
+    id: string.isRequired,
+    title: string.isRequired,
+    body: string.isRequired,
+    authorName: string.isRequired,
+    createdAt: string.isRequired,
+    status: string.isRequired,
+  }),
 };
 
 export default Modal;

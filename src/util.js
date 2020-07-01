@@ -9,8 +9,9 @@ export const filterByTitle = (array, query) =>
     element.title.toLowerCase().includes(query.toLowerCase())
   );
 
-export const getElemById = (array, id) =>
-  array.find((element) => element.id === id);
+export const getElemById = (array, id) => {
+  return array.find((element) => element.id === id);
+};
 
 export const sortByNewestDate = (array) =>
   array
@@ -21,11 +22,24 @@ export const sortByNewestDate = (array) =>
     );
 
 export const addOrReplaceItem = (array, item) => {
-  if (array.length === 0) {
-    return [{ ...item, id: generateUniqueId }];
-  } else {
+  if (array && array.length === 0) {
+    return [{ ...item, id: generateUniqueId() }];
+  }
+
+  if (containsItem(array, item)) {
     return array.map((el) =>
       el.id === item.id ? { ...item, createdAt: new Date().toString() } : el
     );
   }
+
+  return [
+    ...array,
+    {
+      ...item,
+      id: generateUniqueId(),
+      createdAt: new Date().toString(),
+    },
+  ];
 };
+
+const containsItem = (array, item) => !!array.find((el) => el.id === item.id);

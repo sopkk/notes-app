@@ -1,4 +1,5 @@
 import React from "react";
+import { string, func } from "prop-types"; // ES6
 
 import "./Note.css";
 
@@ -29,6 +30,17 @@ const Note = ({
       <div>{status}</div>
     </div>
   );
+};
+
+Note.propTypes = {
+  id: string.isRequired,
+  title: string.isRequired,
+  body: string.isRequired,
+  authorName: string.isRequired,
+  createdAt: string.isRequired,
+  status: string.isRequired,
+  onDelete: func.isRequired,
+  onClick: func.isRequired,
 };
 
 export default Note;

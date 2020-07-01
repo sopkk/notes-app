@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Input.css";
+import { string, func } from "prop-types";
 
 const Input = ({ tag, type, name, value, placeholder, onChange }) => {
   switch (tag) {
@@ -38,6 +39,15 @@ const Input = ({ tag, type, name, value, placeholder, onChange }) => {
         />
       );
   }
+};
+
+Input.propTypes = {
+  tag: string.isRequired,
+  type: string.isRequired,
+  name: string.isRequired,
+  value: string,
+  placeholder: string,
+  onChange: func,
 };
 
 export default Input;
