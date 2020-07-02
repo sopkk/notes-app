@@ -1,13 +1,16 @@
 const MAX_LENGTH_MESSAGE = "Max character is ";
 const REQUIRED_MESSAGE = "This field is required";
 
-const MAX_LENGTH_TITLE = 80;
-const MAX_LENGTH_AUTHOR = 80;
-const MAX_LENGTH_BODY = 200;
+const MAX_LENGTH_TITLE = 20;
+const MAX_LENGTH_AUTHOR = 20;
+const MAX_LENGTH_BODY = 80;
 
 export const isFormValid = (validationMessage) =>
   Object.values(validationMessage).filter((val) => !val["isValid"]).length ===
   0;
+
+// export const canSaveDraft = (validationMessage) =>
+//   Object.values(validationMessage).filter((val) => !val["isValid"]).length > 0;
 
 export const getValidationMessage = (name, value) => {
   if (value.trim() === "") {

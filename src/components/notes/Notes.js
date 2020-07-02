@@ -1,24 +1,37 @@
 import React from "react";
-
-import Note from "../note/Note";
-import "./Notes.css";
 import { func, string, arrayOf, shape } from "prop-types";
 
-const Notes = ({ data, onDelete, onClick, className }) => (
+import Note from "../note/Note";
+
+const Notes = ({ data, onDelete, onClick, className = "col-12" }) => (
   <div className={className}>
-    {data.map((note) => (
-      <Note
-        key={note.id}
-        id={note.id}
-        title={note.title}
-        body={note.body}
-        authorName={note.authorName}
-        createdAt={note.createdAt}
-        status={note.status}
-        onDelete={onDelete}
-        onClick={onClick}
-      />
-    ))}
+    <div className="row">
+      {data.map((note) => (
+        <div
+          className={
+            note.status === "published"
+              ? "card-group col-lg-4 col-sm-12 pt-2"
+              : "card-group col-lg-12 col-sm-12 pt-1"
+          }
+          key={note.id}
+        >
+          <Note
+            id={note.id}
+            title={note.title}
+            body={note.body}
+            authorName={note.authorName}
+            createdAt={note.createdAt}
+            onDelete={onDelete}
+            onClick={onClick}
+            className={
+              note.status === "published"
+                ? "card text-white bg-dark"
+                : "card text-secondary border-secondary"
+            }
+          />
+        </div>
+      ))}
+    </div>
   </div>
 );
 

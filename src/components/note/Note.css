@@ -1,14 +1,35 @@
 .notes {
   color: white;
   border-radius: 2%;
-  border-color: palevioletred;
-  background-color: palevioletred;
-  width: 20%;
   margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.drafts {
+  color: white;
+  border-radius: 2%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.note-title {
+  font-size: large;
+  margin-left: 1vw;
+  font-weight: bold;
+}
+
+.note-body {
+  text-align: center;
+  margin: 1vw;
 }
 
 .note-author-name {
   text-align: right;
+  font-weight: bold;
 }
 
 .note-created-at {
@@ -16,16 +37,26 @@
   font-style: italic;
 }
 
-.delete {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.note-status {
+  color: white;
 }
 
-.delete:hover,
-.delete:focus {
+.note-delete {
+  color: #aaaaaa;
+  float: right;
+  font-size: large;
+  font-weight: bold;
+  margin-right: 0.5vw;
+}
+
+.note-delete:hover,
+.note-delete:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.note-footer {
+  position: absolute;
+  right: 8px;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { string, func } from "prop-types";
-import "./Input.css";
 
 const Input = ({
   tag,
@@ -11,6 +10,7 @@ const Input = ({
   placeholder,
   onChange,
   validationMessage,
+  className,
 }) => {
   switch (tag) {
     case "input":
@@ -22,7 +22,7 @@ const Input = ({
             value={value}
             placeholder={placeholder}
             onChange={onChange}
-            className="input-field"
+            className={className}
           />
           <label>{validationMessage}</label>
         </div>
@@ -36,7 +36,7 @@ const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             rows="3"
-            className="textarea-field"
+            className={className}
           ></textarea>
           <label>{validationMessage}</label>
         </div>
@@ -51,7 +51,7 @@ const Input = ({
             value={value}
             placeholder={placeholder}
             onChange={onChange}
-            className="input-field"
+            className={className}
           />
         </div>
       );
@@ -66,6 +66,7 @@ Input.propTypes = {
   placeholder: string,
   onChange: func,
   validationMessage: string,
+  className: string,
 };
 
 export default Input;

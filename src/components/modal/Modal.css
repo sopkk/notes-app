@@ -1,4 +1,4 @@
-.modal {
+.note-modal {
   position: fixed;
   z-index: 100;
   padding-top: 100px;
@@ -11,12 +11,12 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.note-modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  width: 40%;
 }
 
 .close {
@@ -53,4 +53,20 @@
   background: #dddddd;
   color: white;
   cursor: not-allowed;
+}
+
+.input-field {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+  height: 30px;
+  padding: 0;
+  margin: 5px;
+}
+
+.textarea-field {
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
 }

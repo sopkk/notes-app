@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import data from "../../notes.json";
+import { getTimestamp } from "../../util";
 
 export const PUBLISHED = "published";
 export const DRAFT = "draft";
@@ -15,7 +16,7 @@ export const saveNote = (note) => {
     dispatch(
       actionTypes.saveNote({
         ...note,
-        createdAt: new Date().toString(),
+        createdAt: getTimestamp(),
         status: PUBLISHED,
       })
     );
@@ -33,7 +34,7 @@ export const saveDraft = (note) => {
     dispatch(
       actionTypes.saveDraft({
         ...note,
-        createdAt: new Date().toString(),
+        createdAt: getTimestamp(),
         status: DRAFT,
       })
     );
@@ -49,7 +50,10 @@ export const selectDraft = (id) => {
 export const publishDraft = (note) => {
   return (dispatch) => {
     dispatch(
-      actionTypes.publishDraft({ ...note, createdAt: new Date().toString() })
+      actionTypes.publishDraft({
+        ...note,
+        createdAt: getTimestamp(),
+      })
     );
   };
 };

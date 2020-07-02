@@ -1,13 +1,11 @@
 import React from "react";
+
 import MainPage from "./components/mainPage/MainPage";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  return (
-    <div>
-      <h3>Notes</h3>
-      <MainPage />
-    </div>
-  );
+  return <MainPage />;
 }
 
 export default App;

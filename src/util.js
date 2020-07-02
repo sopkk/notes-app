@@ -28,7 +28,7 @@ export const addOrReplaceItem = (array, item) => {
 
   if (containsItem(array, item)) {
     return array.map((el) =>
-      el.id === item.id ? { ...item, createdAt: new Date().toString() } : el
+      el.id === item.id ? { ...item, createdAt: getTimestamp() } : el
     );
   }
 
@@ -37,9 +37,11 @@ export const addOrReplaceItem = (array, item) => {
     {
       ...item,
       id: generateUniqueId(),
-      createdAt: new Date().toString(),
+      createdAt: getTimestamp(),
     },
   ];
 };
 
 const containsItem = (array, item) => !!array.find((el) => el.id === item.id);
+
+export const getTimestamp = () => new Date().toString().slice(0, 24);

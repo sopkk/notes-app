@@ -13,6 +13,7 @@ import {
   selectDraft,
 } from "../../store/selectors/selectNotes";
 import { DRAFT } from "../../store/actions/noteActions";
+import "./MainPage.css";
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -84,41 +85,70 @@ const MainPage = () => {
         onSaveDraft={handleSaveDraft}
         selectedDraft={selectedDraft}
       />
-      <Input
-        tag="input"
-        type="text"
-        name="search"
-        placeholder="Search by title..."
-        onChange={handleChange}
-      />
-      {!query && (
-        <div>
-          <Button
-            name="add-note-modal-button"
-            type="button"
-            onClick={handleClick}
-            className="add-note-modal-button"
-          >
-            +
-          </Button>
-          <Button
-            name="sort-button"
-            type="button"
-            className="sort-button"
-            onClick={handleSort}
-          >
-            Sort
-          </Button>
+
+      <div className="row">
+        <div className="col-lg-9">
+          <h3>Notes</h3>
+          <div className="row">
+            <div className="col-lg-6 col-sm-12">
+              <Input
+                tag="input"
+                type="text"
+                name="search"
+                placeholder="Search by title..."
+                onChange={handleChange}
+                className="search-input"
+              />
+            </div>
+            {!query && (
+              <div className="col-lg-6 col-sm-12">
+                <Button
+                  name="add-note-modal-button"
+                  type="button"
+                  onClick={handleClick}
+                  className="btn btn-info add-note-modal-button col-lg-3 col-sm-6"
+                >
+                  +
+                </Button>
+                <Button
+                  name="sort-button"
+                  type="button"
+                  className="btn btn-outline-dark sort-button col-lg-3 col-sm-6"
+                  onClick={handleSort}
+                >
+                  Sort
+                </Button>
+              </div>
+            )}
+          </div>
+          <div className="row">
+            <Notes
+              data={data}
+              onDelete={handleDeleteNote}
+              onClick={() => {}}
+              className="col-lg-12"
+            />
+          </div>
         </div>
-      )}
-      <Notes data={data} onDelete={handleDeleteNote} onClick={() => {}} />
-      {!query && (
-        <Notes
-          data={drafts}
-          onDelete={handleDeleteDraft}
-          onClick={handleDraft}
-        />
-      )}
+
+        <div className="col-lg-3">
+          {!query && (
+            <div className="">
+              <h3 className="drafts-heading">Drafts</h3>
+              {drafts.length !== 0 ? (
+                <Notes
+                  data={drafts}
+                  onDelete={handleDeleteDraft}
+                  onClick={handleDraft}
+                  className="drafts col-12"
+                />
+              ) : (
+                <div className="no-draft-message">No drafts...</div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
